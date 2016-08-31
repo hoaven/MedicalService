@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.ZanMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.Zan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="limits" property="limits" jdbcType="INTEGER" />
+    <result column="authorid" property="authorid" jdbcType="INTEGER" />
+    <result column="tieid" property="tieid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, limits, authorid, tieid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_zan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectcheck"  resultMap="BaseResultMap"  parameterType="jplus.cherry.medicalservice.model.Zan" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_zan
+    where
+    limits = #{limits,jdbcType=INTEGER}
+    AND authorid = #{authorid,jdbcType=INTEGER}
+    AND  tieid = #{tieid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+    from m_zan
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_zan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.Zan" >
+    insert into m_zan (id, limits, authorid, 
+      tieid)
+    values (#{id,jdbcType=INTEGER}, #{limits,jdbcType=INTEGER}, #{authorid,jdbcType=INTEGER}, 
+      #{tieid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.Zan" >
+    insert into m_zan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="limits != null" >
+        limits,
+      </if>
+      <if test="authorid != null" >
+        authorid,
+      </if>
+      <if test="tieid != null" >
+        tieid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="limits != null" >
+        #{limits,jdbcType=INTEGER},
+      </if>
+      <if test="authorid != null" >
+        #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="tieid != null" >
+        #{tieid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.Zan" >
+    update m_zan
+    <set >
+      <if test="limits != null" >
+        limits = #{limits,jdbcType=INTEGER},
+      </if>
+      <if test="authorid != null" >
+        authorid = #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="tieid != null" >
+        tieid = #{tieid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.Zan" >
+    update m_zan
+    set limits = #{limits,jdbcType=INTEGER},
+      authorid = #{authorid,jdbcType=INTEGER},
+      tieid = #{tieid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+</mapper>

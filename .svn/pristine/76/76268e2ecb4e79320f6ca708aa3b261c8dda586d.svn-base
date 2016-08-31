@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.LimitsMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.Limits" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="limitsname" property="limitsname" jdbcType="VARCHAR" />
+    <result column="limit" property="limit" jdbcType="TINYINT" />
+    <result column="descriptions" property="descriptions" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, limitsname, limit, descriptions
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_limits
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+     <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+    from m_limits
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_limits
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.Limits" >
+    insert into m_limits (id, limitsname, limit, 
+      descriptions)
+    values (#{id,jdbcType=INTEGER}, #{limitsname,jdbcType=VARCHAR}, #{limit,jdbcType=TINYINT}, 
+      #{descriptions,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.Limits" >
+    insert into m_limits
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="limitsname != null" >
+        limitsname,
+      </if>
+      <if test="limit != null" >
+        limit,
+      </if>
+      <if test="descriptions != null" >
+        descriptions,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="limitsname != null" >
+        #{limitsname,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null" >
+        #{limit,jdbcType=TINYINT},
+      </if>
+      <if test="descriptions != null" >
+        #{descriptions,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.Limits" >
+    update m_limits
+    <set >
+      <if test="limitsname != null" >
+        limitsname = #{limitsname,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null" >
+        limit = #{limit,jdbcType=TINYINT},
+      </if>
+      <if test="descriptions != null" >
+        descriptions = #{descriptions,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.Limits" >
+    update m_limits
+    set limitsname = #{limitsname,jdbcType=VARCHAR},
+      limit = #{limit,jdbcType=TINYINT},
+      descriptions = #{descriptions,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

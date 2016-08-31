@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.AnswertieMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.Answertie" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tieid" property="tieid" jdbcType="INTEGER" />
+    <result column="limits" property="limits" jdbcType="INTEGER" />
+    <result column="authorid" property="authorid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="relaytime" property="relaytime" jdbcType="TIMESTAMP" />
+    <result column="beizhu" property="beizhu" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tieid, limits, authorid, content, relaytime, beizhu, name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_answertie
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectBytieid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_answertie
+    where tieid = #{tieid,jdbcType=INTEGER}
+  </select>
+  
+     <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+    from m_answertie
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_answertie
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.Answertie" >
+    insert into m_answertie (id, tieid, limits, 
+      authorid, content, relaytime, 
+      beizhu, name)
+    values (#{id,jdbcType=INTEGER}, #{tieid,jdbcType=INTEGER}, #{limits,jdbcType=INTEGER}, 
+      #{authorid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{relaytime,jdbcType=TIMESTAMP}, 
+      #{beizhu,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.Answertie" >
+    insert into m_answertie
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tieid != null" >
+        tieid,
+      </if>
+      <if test="limits != null" >
+        limits,
+      </if>
+      <if test="authorid != null" >
+        authorid,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="relaytime != null" >
+        relaytime,
+      </if>
+      <if test="beizhu != null" >
+        beizhu,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tieid != null" >
+        #{tieid,jdbcType=INTEGER},
+      </if>
+      <if test="limits != null" >
+        #{limits,jdbcType=INTEGER},
+      </if>
+      <if test="authorid != null" >
+        #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="relaytime != null" >
+        #{relaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null" >
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+       <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.Answertie" >
+    update m_answertie
+    <set >
+      <if test="tieid != null" >
+        tieid = #{tieid,jdbcType=INTEGER},
+      </if>
+      <if test="limits != null" >
+        limits = #{limits,jdbcType=INTEGER},
+      </if>
+      <if test="authorid != null" >
+        authorid = #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="relaytime != null" >
+        relaytime = #{relaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null" >
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+       <if test="name != null" >
+       name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.Answertie" >
+    update m_answertie
+    set tieid = #{tieid,jdbcType=INTEGER},
+      limits = #{limits,jdbcType=INTEGER},
+      authorid = #{authorid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      relaytime = #{relaytime,jdbcType=TIMESTAMP},
+      beizhu = #{beizhu,jdbcType=VARCHAR}
+      name =  #{name,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

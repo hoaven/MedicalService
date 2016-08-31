@@ -1,0 +1,78 @@
+body{
+    font-family: "Microsoft YaHei";
+}
+
+.content{
+    width: 85%;
+    min-height: 550px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.welcome{
+    width: 96%;
+    height: 35px;
+    font-size: 18px;
+    text-align: right;
+    border-bottom: 2px solid #ffa0a0;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.content ul{
+    width: 17%;
+    float: left;
+    margin-left: 20px;
+}
+
+.nav-pills>li{
+    float: none;
+    width: 100%;
+    margin-bottom: 17px;
+    color: #79776f;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    background: -moz-linear-gradient(top,#f7feef,#e5eabe);
+    background: -webkit-linear-gradient(top,#f7feef,#e5eabe);
+    background: -ms-linear-gradient(top,#f7feef,#e5eabe);
+    background: -o-linear-gradient(top,#f7feef,#e5eabe);
+    background: linear-gradient(top,#f7feef,#e5eabe);
+    filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#f7feef,endcolorstr=#e5eabe,gradientType=0);
+}
+
+.nav-pills>li>a{
+    color: #79776f;
+}
+
+.nav-pills>li.active>a,.nav-pills>li.active>a:focus,.nav-pills>li>a:hover, .nav-pills>li.active>a:hover{
+    transform: scale(1.1,1.1);
+    -webkit-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    background: -moz-linear-gradient(top,#f9c1c8,#ee5f70);
+    background: -webkit-linear-gradient(top,#f9c1c8,#ee5f70);
+    background: -ms-linear-gradient(top,#f9c1c8,#ee5f70);
+    background: -o-linear-gradient(top,#f9c1c8,#ee5f70);
+    background: linear-gradient(top,#f9c1c8,#ee5f70);
+    filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#f9c1c8,endcolorstr=#ee5f70,gradientType=0);
+}
+
+.tab-content>.tab-pane {
+    display:none;
+    width: 78%;
+    height: 740px;
+    margin-bottom: 50px;
+    float: left;
+    margin-left: 8px;
+    border: 2px solid #ffa0a0;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.tab-content>.active{
+    display:block;
+}

@@ -1,0 +1,168 @@
+.main-forum{
+    width: 1050px;
+    height: 960px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.main-forum .forum{
+    width: 700px;
+    height: 900px;
+    float: left;
+}
+
+.main-forum .forum .title{
+    width: 710px;
+    height: 40px;
+    border-bottom: 3px solid #45bafa;
+    padding-left: 20px;
+    padding-right: 40px;
+}
+
+.forum .title .t1{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.forum .title .t2{
+    font-size: 20px;
+    color: #d0c8c8;
+}
+
+.forum .range{
+    float: right;
+    margin-right: 10px;
+}
+
+.forum-content{
+    width: 690px;
+    height: 890px;
+    margin-top: 25px;
+    margin-left: 15px;
+    border: 3px solid #c9c7c1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.forum1{
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #c9c7c1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.forum .quality{
+    float: right;
+    margin-top: -27px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.level1{
+    color: red;
+}
+
+.level2{
+    color: #31b0d5;
+}
+
+.level3{
+    color: cadetblue;
+}
+
+.level4{
+    color: #8a6d3b;
+}
+
+.forum1 .text1{
+    height: 70px;
+    width: 660px;
+}
+
+.forum1 .text1 .forum-text{
+    font-size: 14px;
+    text-indent: 2em;
+}
+
+.forum1 .text2{
+    font-weight: bold;
+    width: 60px;
+}
+
+.forum1 .text2 .special{
+    color: #226ffc;
+}
+
+.forum1 .text2 .top{
+    color: #7bd313;
+    margin-left: 10px;
+}
+
+.forum1 .author,.forum1 .subject{
+    width: 120px;
+    margin-bottom: 5px;
+    float: right;
+}
+
+.page{
+    width: 100%;
+    height: 70px;
+    margin-left: 180px;
+}
+
+.forum-content .input_forum{
+    width: 100%;
+    height: 450px;
+    padding: 15px;
+    border-top: 1px solid #c9c7c1;
+}
+
+.forum-content .input_forum input.form-control{
+    width: 300px;
+}
+
+.star{
+    width: 25%;
+    height: 750px;
+    float: right;
+    margin-top: 70px;
+}
+
+.popstar{
+    width: 90%;
+    height: 260px;
+    margin-bottom: 120px;
+}
+
+.popstar .text1{
+    width: 180px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    margin-top: -48px;
+}
+
+.text1 span,.bottomright .text1 span{
+    display: block;
+    width: 40px;
+    height: 40px;
+    float: left;
+    background: -moz-linear-gradient(top,#90eef0,#22a3ff);
+    background: -webkit-linear-gradient(top,#90eef0,#22a3ff);
+    background: -ms-linear-gradient(top,#90eef0,#22a3ff);
+    background: -o-linear-gradient(top,#90eef0,#22a3ff);
+    background: linear-gradient(top,#90eef0,#22a3ff);
+    filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#90eef0,endcolorstr=#22a3ff,gradientType=0);
+    line-height: 2.2em;
+    border-radius: 18px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+}
+
+
+
+
+

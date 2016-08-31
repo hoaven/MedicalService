@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.NewsMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.News" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="newstitle" property="newstitle" jdbcType="VARCHAR" />
+    <result column="categoryid" property="categoryid" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="descriptions" property="descriptions" jdbcType="VARCHAR" />
+    <result column="releasetime" property="releasetime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, newstitle, categoryid, url, descriptions, releasetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_news
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+     <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+     from m_news
+  </select>
+  <select id="findNewsBysCategory" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_news
+    where categoryid = #{ncid,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_news
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.News" >
+    insert into m_news (id, newstitle, categoryid, 
+      url, descriptions, releasetime
+      )
+    values (#{id,jdbcType=INTEGER}, #{newstitle,jdbcType=VARCHAR}, #{categoryid,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{descriptions,jdbcType=VARCHAR}, #{releasetime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.News" >
+    insert into m_news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="newstitle != null" >
+        newstitle,
+      </if>
+      <if test="categoryid != null" >
+        categoryid,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="descriptions != null" >
+        descriptions,
+      </if>
+      <if test="releasetime != null" >
+        releasetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newstitle != null" >
+        #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptions != null" >
+        #{descriptions,jdbcType=VARCHAR},
+      </if>
+      <if test="releasetime != null" >
+        #{releasetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.News" >
+    update m_news
+    <set >
+      <if test="newstitle != null" >
+        newstitle = #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        categoryid = #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptions != null" >
+        descriptions = #{descriptions,jdbcType=VARCHAR},
+      </if>
+      <if test="releasetime != null" >
+        releasetime = #{releasetime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.News" >
+    update m_news
+    set newstitle = #{newstitle,jdbcType=VARCHAR},
+      categoryid = #{categoryid,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      descriptions = #{descriptions,jdbcType=VARCHAR},
+      releasetime = #{releasetime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

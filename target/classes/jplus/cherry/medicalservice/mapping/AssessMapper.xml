@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.AssessMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.Assess" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="appointmentid" property="appointmentid" jdbcType="INTEGER" />
+    <result column="fwtdscores" property="fwtdscores" jdbcType="REAL" />
+    <result column="jzgxscores" property="jzgxscores" jdbcType="REAL" />
+    <result column="jzshscores" property="jzshscores" jdbcType="REAL" />
+    <result column="totalscores" property="totalscores" jdbcType="REAL" />
+    <result column="suggestions" property="suggestions" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="doctorid" property="doctorid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, appointmentid, fwtdscores, jzgxscores, jzshscores, totalscores, suggestions, 
+    userid, doctorid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_assess
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+     <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+     from m_assess
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_assess
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.Assess" >
+    insert into m_assess (id, appointmentid, fwtdscores, 
+      jzgxscores, jzshscores, totalscores, 
+      suggestions, userid, doctorid
+      )
+    values (#{id,jdbcType=INTEGER}, #{appointmentid,jdbcType=INTEGER}, #{fwtdscores,jdbcType=REAL}, 
+      #{jzgxscores,jdbcType=REAL}, #{jzshscores,jdbcType=REAL}, #{totalscores,jdbcType=REAL}, 
+      #{suggestions,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{doctorid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.Assess" >
+    insert into m_assess
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appointmentid != null" >
+        appointmentid,
+      </if>
+      <if test="fwtdscores != null" >
+        fwtdscores,
+      </if>
+      <if test="jzgxscores != null" >
+        jzgxscores,
+      </if>
+      <if test="jzshscores != null" >
+        jzshscores,
+      </if>
+      <if test="totalscores != null" >
+        totalscores,
+      </if>
+      <if test="suggestions != null" >
+        suggestions,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="doctorid != null" >
+        doctorid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appointmentid != null" >
+        #{appointmentid,jdbcType=INTEGER},
+      </if>
+      <if test="fwtdscores != null" >
+        #{fwtdscores,jdbcType=REAL},
+      </if>
+      <if test="jzgxscores != null" >
+        #{jzgxscores,jdbcType=REAL},
+      </if>
+      <if test="jzshscores != null" >
+        #{jzshscores,jdbcType=REAL},
+      </if>
+      <if test="totalscores != null" >
+        #{totalscores,jdbcType=REAL},
+      </if>
+      <if test="suggestions != null" >
+        #{suggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="doctorid != null" >
+        #{doctorid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.Assess" >
+    update m_assess
+    <set >
+      <if test="appointmentid != null" >
+        appointmentid = #{appointmentid,jdbcType=INTEGER},
+      </if>
+      <if test="fwtdscores != null" >
+        fwtdscores = #{fwtdscores,jdbcType=REAL},
+      </if>
+      <if test="jzgxscores != null" >
+        jzgxscores = #{jzgxscores,jdbcType=REAL},
+      </if>
+      <if test="jzshscores != null" >
+        jzshscores = #{jzshscores,jdbcType=REAL},
+      </if>
+      <if test="totalscores != null" >
+        totalscores = #{totalscores,jdbcType=REAL},
+      </if>
+      <if test="suggestions != null" >
+        suggestions = #{suggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="doctorid != null" >
+        doctorid = #{doctorid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.Assess" >
+    update m_assess
+    set appointmentid = #{appointmentid,jdbcType=INTEGER},
+      fwtdscores = #{fwtdscores,jdbcType=REAL},
+      jzgxscores = #{jzgxscores,jdbcType=REAL},
+      jzshscores = #{jzshscores,jdbcType=REAL},
+      totalscores = #{totalscores,jdbcType=REAL},
+      suggestions = #{suggestions,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      doctorid = #{doctorid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

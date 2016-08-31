@@ -1,0 +1,40 @@
+package jplus.cherry.medicalservice.model;
+
+public class Department {
+    private Integer id;
+
+    private String name;
+
+    private String descriptions;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public String getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions == null ? null : descriptions.trim();
+    }
+
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + ", descriptions=" + descriptions + "]";
+	}
+    
+    
+}

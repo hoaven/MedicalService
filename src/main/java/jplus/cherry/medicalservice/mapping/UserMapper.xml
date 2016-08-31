@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.UserMapper" >
+	<!-- 在mybatis中，映射文件中的namespace是用于绑定Dao接口的，即面向接口编程。
+	当你的namespace绑定接口后，你可以不用写dao接口实现类，mybatis会通过该绑定自动
+	帮你找到对应要执行的SQL语句，如下：
+	假设定义了IArticeDAO接口
+	public interface IArticleDAO
+	{
+	   List<Article> selectAllArticle();
+	}
+	 
+	对于映射文件如下：
+	<mapper namespace="IArticleDAO">
+		<select id="selectAllArticle" resultType="article">
+			    SELECT t.* FROM T_article t WHERE t.flag = '1' ORDER BY t.createtime DESC
+	 	</select>
+	请注意接口中的方法与映射文件中的SQL语句的ID一一对应 。
+	则在代码中可以直接使用IArticeDAO面向接口编程而不需要再编写实现类。
+	 -->
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="medicalnum" property="medicalnum" jdbcType="VARCHAR" />
+    <result column="certnum" property="certnum" jdbcType="VARCHAR" />
+    <result column="regtime" property="regtime" jdbcType="TIMESTAMP" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="limits" property="limits" jdbcType="INTEGER" />
+    <result column="descriptions" property="descriptions" jdbcType="VARCHAR" />
+    <result column="photourl" property="photourl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, username, realname, password, medicalnum, certnum, regtime, sex, age, address, 
+    telephone, email, limits, descriptions, photourl
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="find" resultMap="BaseResultMap" parameterType="java.lang.String">
+	select 
+    <include refid="Base_Column_List" />
+    from m_user
+    where username = #{username}
+  </select>
+   <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+    from m_user
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.User" >
+    insert into m_user (id, username, realname, 
+      password, medicalnum, certnum, 
+      regtime, sex, age, address, 
+      telephone, email, limits, 
+      descriptions, photourl)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{medicalnum,jdbcType=VARCHAR}, #{certnum,jdbcType=VARCHAR}, 
+      #{regtime,jdbcType=TIMESTAMP}, #{sex,jdbcType=BIT}, #{age,jdbcType=TINYINT}, #{address,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{limits,jdbcType=INTEGER}, 
+      #{descriptions,jdbcType=VARCHAR}, #{photourl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.User" >
+    insert into m_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="medicalnum != null" >
+        medicalnum,
+      </if>
+      <if test="certnum != null" >
+        certnum,
+      </if>
+      <if test="regtime != null" >
+        regtime,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="limits != null" >
+        limits,
+      </if>
+      <if test="descriptions != null" >
+        descriptions,
+      </if>
+      <if test="photourl != null" >
+        photourl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalnum != null" >
+        #{medicalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certnum != null" >
+        #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="limits != null" >
+        #{limits,jdbcType=INTEGER},
+      </if>
+      <if test="descriptions != null" >
+        #{descriptions,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl != null" >
+        #{photourl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.User" >
+    update m_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalnum != null" >
+        medicalnum = #{medicalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certnum != null" >
+        certnum = #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        regtime = #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="limits != null" >
+        limits = #{limits,jdbcType=INTEGER},
+      </if>
+      <if test="descriptions != null" >
+        descriptions = #{descriptions,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl != null" >
+        photourl = #{photourl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.User" >
+    update m_user
+    set username = #{username,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      medicalnum = #{medicalnum,jdbcType=VARCHAR},
+      certnum = #{certnum,jdbcType=VARCHAR},
+      regtime = #{regtime,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      limits = #{limits,jdbcType=INTEGER},
+      descriptions = #{descriptions,jdbcType=VARCHAR},
+      photourl = #{photourl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

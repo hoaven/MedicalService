@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.RegistMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.Regist" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ghnumber" property="ghnumber" jdbcType="VARCHAR" />
+    <result column="ghtime" property="ghtime" jdbcType="TIMESTAMP" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="doctorId" property="doctorid" jdbcType="INTEGER" />
+    <result column="ksId" property="ksid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="descriptions" property="descriptions" jdbcType="VARCHAR" />
+    <result column="cureprocess" property="cureprocess" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ghnumber, ghtime, userId, doctorId, ksId, content, descriptions, cureprocess
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_regist
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+    from m_regist
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_regist
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.Regist" >
+    insert into m_regist (id, ghnumber, ghtime, 
+      userId, doctorId, ksId, 
+      content, descriptions, cureprocess
+      )
+    values (#{id,jdbcType=INTEGER}, #{ghnumber,jdbcType=VARCHAR}, #{ghtime,jdbcType=TIMESTAMP}, 
+      #{userid,jdbcType=INTEGER}, #{doctorid,jdbcType=INTEGER}, #{ksid,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{descriptions,jdbcType=VARCHAR}, #{cureprocess,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.Regist" >
+    insert into m_regist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ghnumber != null" >
+        ghnumber,
+      </if>
+      <if test="ghtime != null" >
+        ghtime,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="doctorid != null" >
+        doctorId,
+      </if>
+      <if test="ksid != null" >
+        ksId,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="descriptions != null" >
+        descriptions,
+      </if>
+      <if test="cureprocess != null" >
+        cureprocess,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ghnumber != null" >
+        #{ghnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ghtime != null" >
+        #{ghtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="doctorid != null" >
+        #{doctorid,jdbcType=INTEGER},
+      </if>
+      <if test="ksid != null" >
+        #{ksid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptions != null" >
+        #{descriptions,jdbcType=VARCHAR},
+      </if>
+      <if test="cureprocess != null" >
+        #{cureprocess,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.Regist" >
+    update m_regist
+    <set >
+      <if test="ghnumber != null" >
+        ghnumber = #{ghnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ghtime != null" >
+        ghtime = #{ghtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="doctorid != null" >
+        doctorId = #{doctorid,jdbcType=INTEGER},
+      </if>
+      <if test="ksid != null" >
+        ksId = #{ksid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptions != null" >
+        descriptions = #{descriptions,jdbcType=VARCHAR},
+      </if>
+      <if test="cureprocess != null" >
+        cureprocess = #{cureprocess,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.Regist" >
+    update m_regist
+    set ghnumber = #{ghnumber,jdbcType=VARCHAR},
+      ghtime = #{ghtime,jdbcType=TIMESTAMP},
+      userId = #{userid,jdbcType=INTEGER},
+      doctorId = #{doctorid,jdbcType=INTEGER},
+      ksId = #{ksid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      descriptions = #{descriptions,jdbcType=VARCHAR},
+      cureprocess = #{cureprocess,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

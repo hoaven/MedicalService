@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jplus.cherry.medicalservice.dao.DistributeMapper" >
+  <resultMap id="BaseResultMap" type="jplus.cherry.medicalservice.model.Distribute" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="fwtdscale" property="fwtdscale" jdbcType="TINYINT" />
+    <result column="jzgxscale" property="jzgxscale" jdbcType="TINYINT" />
+    <result column="jzshscale" property="jzshscale" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, fwtdscale, jzgxscale, jzshscale
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_distribute
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+     <select id="selectAll" resultMap="BaseResultMap" >
+   	select 
+    <include refid="Base_Column_List" />
+    from m_distribute
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_distribute
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="jplus.cherry.medicalservice.model.Distribute" >
+    insert into m_distribute (id, fwtdscale, jzgxscale, 
+      jzshscale)
+    values (#{id,jdbcType=INTEGER}, #{fwtdscale,jdbcType=TINYINT}, #{jzgxscale,jdbcType=TINYINT}, 
+      #{jzshscale,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="jplus.cherry.medicalservice.model.Distribute" >
+    insert into m_distribute
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fwtdscale != null" >
+        fwtdscale,
+      </if>
+      <if test="jzgxscale != null" >
+        jzgxscale,
+      </if>
+      <if test="jzshscale != null" >
+        jzshscale,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fwtdscale != null" >
+        #{fwtdscale,jdbcType=TINYINT},
+      </if>
+      <if test="jzgxscale != null" >
+        #{jzgxscale,jdbcType=TINYINT},
+      </if>
+      <if test="jzshscale != null" >
+        #{jzshscale,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jplus.cherry.medicalservice.model.Distribute" >
+    update m_distribute
+    <set >
+      <if test="fwtdscale != null" >
+        fwtdscale = #{fwtdscale,jdbcType=TINYINT},
+      </if>
+      <if test="jzgxscale != null" >
+        jzgxscale = #{jzgxscale,jdbcType=TINYINT},
+      </if>
+      <if test="jzshscale != null" >
+        jzshscale = #{jzshscale,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jplus.cherry.medicalservice.model.Distribute" >
+    update m_distribute
+    set fwtdscale = #{fwtdscale,jdbcType=TINYINT},
+      jzgxscale = #{jzgxscale,jdbcType=TINYINT},
+      jzshscale = #{jzshscale,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,8 @@
+package jplus.cherry.medicalservice.service;
+
+import jplus.cherry.medicalservice.model.User;
+
+public interface UserService {
+	User	find(String username);
+	void 	insert(User user);
+}
